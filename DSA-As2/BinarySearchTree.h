@@ -12,6 +12,8 @@ struct TreeNode {
 	link pRight;
 };
 
+void clearBuffer();
+
 link initTree();
 
 link insert(link root, char data);
@@ -22,7 +24,7 @@ link search(link root, char data);
 
 int countNodes(link root);
 
-int determineTreeHeight(link root);
+int getTreeHeight(link root);
 
 void traversePreOrder(link root);
 void traverseInOrder(link root);

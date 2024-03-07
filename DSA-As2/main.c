@@ -1,7 +1,5 @@
 #include "BinarySearchTree.h"
 
-void clearBuffer();
-
 int main() {
 
 	srand(time(NULL));
@@ -39,11 +37,11 @@ int main() {
 
 	} while (isalpha(c));
 
-	return 0;
-}
+	printf("\n\n");
 
-void clearBuffer() {
-	int c;
-	while ((c = getchar()) != '\n' && c != EOF)
-		continue;
+	printf("%i total nodes\n\n", countNodes(root));
+
+	printf("%i tallest path\n\n", getTreeHeight(root));
+
+	return 0;
 }

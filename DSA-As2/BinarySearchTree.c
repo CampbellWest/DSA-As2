@@ -1,5 +1,11 @@
 #include "BinarySearchTree.h"
 
+void clearBuffer() {
+	int c;
+	while ((c = getchar()) != '\n' && c != EOF)
+		continue;
+}
+
 link initTree() {
 	link temp = (link)malloc(sizeof(struct TreeNode));
 	return (temp = NULL);
@@ -42,11 +48,27 @@ link search(link root, char data) {
 }
 
 int countNodes(link root) {
-	return 0;
+
+	if (root == NULL)
+		return 0;
+
+	return (countNodes(root->pLeft) + countNodes(root->pRight) + 1);
 }
 
-int determineTreeHeight(link root) {
-	return 0;
+int getTreeHeight(link root) {
+	
+	int leftHeight, rightHeight;
+
+	if (root == NULL)
+		return -1;
+
+	leftHeight = getTreeHeight(root->pLeft);
+	rightHeight = getTreeHeight(root->pRight);
+
+	if (leftHeight > rightHeight)
+		return (leftHeight + 1);
+	else
+		return (rightHeight + 1);
 }
 
 void traversePreOrder(link root) {
