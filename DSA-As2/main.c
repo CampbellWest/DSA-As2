@@ -1,47 +1,55 @@
-#include "BinarySearchTree.h"
+#include "Tree.h"
 
 int main() {
 
-	srand(time(NULL));
+    srand(time(NULL));
 
-	int num = rand() % (20 - 11 + 1) + 11;
+    int num = rand() % (20 - 11 + 1) + 11;
 
-	link root = initTree();
+    link root = initTree();
 
-	for (int i = 0; i < num; i++) {
-		if (i == 0) {
-			root = insert(root, (rand() % (122 - 97 + 1) + 97));
-			continue;
-		}
-		insert(root, (rand() % (122 - 97 + 1) + 97));
-	}
+    printf("Inserted Order\n");
 
-	printf("\n\n");
-	traversePreOrder(root);
-	printf("\n\n");
-	traverseInOrder(root);
-	printf("\n\n");
-	traversePostOrder(root);
-	printf("\n\n");
+    for (int i = 0; i < num; i++) {
+        if (i == 0) {
+            root = insert(root, (rand() % (122 - 97 + 1) + 97));
+            continue;
+        }
+        insert(root, (rand() % (122 - 97 + 1) + 97));
+    }
 
-	char c;
+    printf("\n\nPreOrder\n");
+    traversePreOrder(root);
+    printf("\n\nInOrder\n");
+    traverseInOrder(root);
+    printf("\n\nPostOrder\n");
+    traversePostOrder(root);
+    printf("\n\nReversed InOrder\n");
+    traverseReverseOrder(root);
+    printf("\n\n");
 
-	do {
-		c = getc(stdin);
-		clearBuffer();
+    char c;
 
-		if (search(root, c) == NULL) 
-			printf("not in tree\n");
-		else
-			printf("found in tree\n");
+    do {
+        if(!isalpha(c = getc(stdin)))
+            break;
 
-	} while (isalpha(c));
+        clearBuffer();
 
-	printf("\n\n");
+        if (search(root, c) == NULL)
+            printf("not in tree\n");
+        else
+            printf("found in tree\n");
 
-	printf("%i total nodes\n\n", countNodes(root));
+    } while (1);
 
-	printf("%i tallest path\n\n", getTreeHeight(root));
+    printf("\n");
 
-	return 0;
+    printf("%i total nodes\n\n", countNodes(root));
+
+    printf("%i tallest path\n\n", getTreeHeight(root));
+
+    freeTree(root);
+
+    return 0;
 }
