@@ -36,6 +36,27 @@ link newNode(char data) {
     return temp;
 }
 
+void searchTree(link root) {
+
+    char c;
+
+    do {
+        printf("\nSearch for char: ");
+        if (!isalpha(c = getc(stdin)))
+            break;
+
+        clearBuffer();
+
+        if (search(root, c) == NULL)
+            printf("Not in tree\n");
+        else
+            printf("Found in tree\n");
+
+    } while (1);
+
+    printf("\n\n");
+}
+
 link search(link root, char data) {
 
     if (root == NULL || root->data == data)
@@ -71,13 +92,13 @@ int getTreeHeight(link root) {
         return (rightHeight + 1);
 }
 
-void traversePreOrder(link root) {
+void freeTree(link root) {
     if (root == NULL)
         return;
 
-    printf("%c->", root->data);
-    traversePreOrder(root->pLeft);
-    traversePreOrder(root->pRight);
+    freeTree(root->pRight);
+    freeTree(root->pLeft);
+    free(root);
 }
 
 void traverseInOrder(link root) {
@@ -87,6 +108,17 @@ void traverseInOrder(link root) {
     traverseInOrder(root->pLeft);
     printf("%c->", root->data);
     traverseInOrder(root->pRight);
+}
+
+//************************************
+
+void traversePreOrder(link root) {
+    if (root == NULL)
+        return;
+
+    printf("%c->", root->data);
+    traversePreOrder(root->pLeft);
+    traversePreOrder(root->pRight);
 }
 
 void traversePostOrder(link root) {
@@ -107,12 +139,4 @@ void traverseReverseOrder(link root){
     traverseReverseOrder(root->pLeft);
 }
 
-void freeTree(link root){
-    if(root == NULL)
-        return;
-
-    freeTree(root->pRight);
-    freeTree(root->pLeft);
-    printf("%c freed\n", root->data);
-    free(root);
-}
+//************************************

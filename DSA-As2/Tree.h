@@ -1,11 +1,13 @@
 #ifndef BINARYTREE_TREE_H
 #define BINARYTREE_TREE_H
 
+#pragma once 
+
 #include "stdbool.h"
 #include "stdlib.h"
 #include "stdio.h"
 #include "ctype.h"
-#include "time.h"
+//#include "time.h"
 
 typedef struct TreeNode* link;
 struct TreeNode {
@@ -21,6 +23,8 @@ link initTree();
 link insert(link root, char data);
 
 link newNode(char data);
+
+void searchTree(link root);
 
 link search(link root, char data);
 

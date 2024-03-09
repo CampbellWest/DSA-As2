@@ -10,7 +10,7 @@ int main() {
 
     printf("Inserted Order\n");
 
-    for (int i = 0; i < num; i++) {
+    for (int i = 0; i < num; i++){
         if (i == 0) {
             root = insert(root, (rand() % (122 - 97 + 1) + 97));
             continue;
@@ -18,36 +18,15 @@ int main() {
         insert(root, (rand() % (122 - 97 + 1) + 97));
     }
 
-    printf("\n\nPreOrder\n");
-    traversePreOrder(root);
     printf("\n\nInOrder\n");
     traverseInOrder(root);
-    printf("\n\nPostOrder\n");
-    traversePostOrder(root);
-    printf("\n\nReversed InOrder\n");
-    traverseReverseOrder(root);
+
     printf("\n\n");
+    //searchTree(root);  // search for specific char 
 
-    char c;
+    printf("Total nodes: %i\n\n", countNodes(root));
 
-    do {
-        if(!isalpha(c = getc(stdin)))
-            break;
-
-        clearBuffer();
-
-        if (search(root, c) == NULL)
-            printf("not in tree\n");
-        else
-            printf("found in tree\n");
-
-    } while (1);
-
-    printf("\n");
-
-    printf("%i total nodes\n\n", countNodes(root));
-
-    printf("%i tallest path\n\n", getTreeHeight(root));
+    printf("Tallest path: %i\n\n", getTreeHeight(root));
 
     freeTree(root);
 
