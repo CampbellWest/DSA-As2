@@ -6,6 +6,14 @@ void clearBuffer() {
         continue;
 }
 
+char randomLetter() {
+    return (rand() % (122 - 97 + 1) + 97);
+}
+
+int getNum() {
+    return rand() % (20 - 11 + 1) + 11;
+}
+
 link initTree() {
     link temp = (link)malloc(sizeof(struct TreeNode));
     return (temp = NULL);
@@ -22,7 +30,7 @@ link insert(link root, char data) {
         root->pLeft = insert(root->pLeft, data);
     else if (data > root->data)
         root->pRight = insert(root->pRight, data);
-
+    
     return root;
 }
 
@@ -98,6 +106,7 @@ void freeTree(link root) {
 
     freeTree(root->pRight);
     freeTree(root->pLeft);
+    //printf("%c freed\n", root->data);
     free(root);
 }
 

@@ -1,13 +1,9 @@
-#ifndef BINARYTREE_TREE_H
-#define BINARYTREE_TREE_H
-
 #pragma once 
 
 #include "stdbool.h"
 #include "stdlib.h"
 #include "stdio.h"
 #include "ctype.h"
-//#include "time.h"
 
 typedef struct TreeNode* link;
 struct TreeNode {
@@ -17,6 +13,8 @@ struct TreeNode {
 };
 
 void clearBuffer();
+
+char randomLetter();
 
 link initTree();
 
@@ -39,5 +37,3 @@ void traversePostOrder(link root);
 void traverseReverseOrder(link root);
 
 void freeTree(link root);
-
-#endif //BINARYTREE_TREE_H

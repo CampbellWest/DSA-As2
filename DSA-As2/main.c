@@ -4,7 +4,9 @@ int main() {
 
     srand(time(NULL));
 
-    int num = rand() % (20 - 11 + 1) + 11;
+    int num = getNum();
+
+    printf("Inserting: %i\n\n", num);
 
     link root = initTree();
 
@@ -12,10 +14,10 @@ int main() {
 
     for (int i = 0; i < num; i++){
         if (i == 0) {
-            root = insert(root, (rand() % (122 - 97 + 1) + 97));
+            root = insert(root, randomLetter());
             continue;
         }
-        insert(root, (rand() % (122 - 97 + 1) + 97));
+        insert(root, randomLetter());
     }
 
     printf("\n\nInOrder\n");
