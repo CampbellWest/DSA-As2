@@ -5,7 +5,7 @@
 #include "stdio.h"
 #include "ctype.h"
 
-typedef struct TreeNode* link;
+typedef struct TreeNode* link; // node struct with a pointer to left and right child 
 struct TreeNode {
     link pLeft;
     char data;
@@ -30,10 +30,10 @@ int countNodes(link root);
 
 int getTreeHeight(link root);
 
+void freeTree(link root);
+
 void traversePreOrder(link root);
 void traverseInOrder(link root);
 void traversePostOrder(link root);
 
 void traverseReverseOrder(link root);
-
-void freeTree(link root);
